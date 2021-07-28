@@ -36,14 +36,35 @@ public class MoveObject : MonoBehaviour
         mySequence.OnComplete(Move);
     }
 
+    bool endAnimation = true;
+    public void TriggerNotRightTap()
+    {
+        if (endAnimation)
+        {
+            endAnimation = false;
+            Sequence mySequence = DOTween.Sequence();
+            mySequence.Append(transform.DOShakeScale(1));
+            mySequence.OnComplete(EndAnimation);
+        }
+    }
     public void TriggerRightTap()
     {
-        //создаем эффект bounce
-        Sequence mySequence = DOTween.Sequence();
-        mySequence.Append(transform.DOScale(0.95f, 0.4f));
-        mySequence.Append(transform.DOScale(1.2f, 0.4f));
-        mySequence.Append(transform.DOScale(0f, 0.4f));
-        //телепортируем цифру за экран
-        mySequence.Append(transform.DOMove(startPosition, 0));
+        if (endAnimation)
+        {
+            endAnimation = false;
+            //создаем эффект bounce
+            Sequence mySequence = DOTween.Sequence();
+            mySequence.Append(transform.DOScale(0.95f, 0.4f));
+            mySequence.Append(transform.DOScale(1.2f, 0.4f));
+            mySequence.Append(transform.DOScale(0f, 0.4f));
+            //телепортируем цифру за экран
+            mySequence.Append(transform.DOMove(startPosition, 0));
+            mySequence.OnComplete(EndAnimation);
+        }
+    }
+
+    private void EndAnimation()
+    {
+        endAnimation = true;
     }
 }

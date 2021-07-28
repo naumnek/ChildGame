@@ -28,7 +28,6 @@ public class NumbersGenerator : MonoBehaviour
 
     int spawnCount = 0; //число заспавненых обьектов
     int numberCount = 0; //число заспавненых обьектов
-    int placeLine = 0; //число в очереди
     float YPosition; //высота спавна.
     bool spawn = true;
     System.Random ran = new System.Random();
@@ -36,10 +35,10 @@ public class NumbersGenerator : MonoBehaviour
 
     void Start()
     {
+        int ii = 0;
         //записываем цифры в список поочередно        
         for (int i = 0; i < maxCount; i++)
         {
-            int ii = 0;
             randomNumbers.Add(ii);
             ii+=1;
             if (ii >= prefabsNumbers.Length) ii = 0;
@@ -53,6 +52,15 @@ public class NumbersGenerator : MonoBehaviour
             randomNumbers[j] = randomNumbers[i];
             randomNumbers[i] = temp;
         }
+        //проверка
+        /*
+        string list = "Random: ";
+        for (int i = 0; i < randomNumbers.Count - 1; i++)
+        {
+            list += randomNumbers[i];
+        }
+        print(list);*/
+
     }
 
     void Update()
@@ -67,18 +75,16 @@ public class NumbersGenerator : MonoBehaviour
 
     IEnumerator Generate()
     {
-        //генерируем Y координату обьекта
-        YPosition = Random.Range(minYScreenSpawn, maxYScreenSpawn);
-        print("Number: " + randomNumbers[numberCount]);
-        //поочередно и рандомно спавним обьекты
-        GameObject obj = Instantiate(prefabsNumbers[randomNumbers[numberCount]], Camera.main.ViewportToWorldPoint(new Vector2(-limitOffScreenSpawn, 0)), Quaternion.identity);
-        numberCount += 1;
-        if (randomNumbers.Count - 1 >= numberCount) numberCount = 0;
-        //назначаем обьекту родителя
-        obj.transform.SetParent(parentsNumber[placeLine], false);
 
         //делаем время активации рандомным
         yield return new WaitForSeconds(Random.Range(minSpawnInterval, maxSpawnInterval));
+
+        //генерируем Y координату обьекта
+        YPosition = Random.Range(minYScreenSpawn, maxYScreenSpawn);
+        //поочередно и рандомно спавним обьекты
+        GameObject obj = Instantiate(prefabsNumbers[randomNumbers[numberCount]], Camera.main.ViewportToWorldPoint(new Vector2(-limitOffScreenSpawn, 0)), Quaternion.identity);
+        //назначаем обьекту родителя
+        obj.transform.SetParent(parentsNumber[randomNumbers[numberCount]], false);
 
         //настраиваем обьект
         SettingsObject(obj);
@@ -86,10 +92,6 @@ public class NumbersGenerator : MonoBehaviour
         SetMovePositionObject(obj);
         //соохраняем и делимся обьектом
         SaveShareInfo(obj);
-
-        //проверяем не достигли ли мы конца
-        placeLine += 1;
-        if (placeLine >= parentsNumber.Count) placeLine = 0;
     }
 
     private void SettingsObject(GameObject obj)
@@ -100,6 +102,7 @@ public class NumbersGenerator : MonoBehaviour
         //даём обьекту цвет
         colorManager.GenerateColor(obj); //даём обьекту цвет
         //даём обьекту скрипт
+        obj.GetComponent<TapLogic>().number = randomNumbers[numberCount] + 1; //даём TapLogic наш скрипт
         obj.GetComponent<TapLogic>().m_numbersManager = numbersManager; //даём TapLogic наш скрипт
     }
 
@@ -121,6 +124,9 @@ public class NumbersGenerator : MonoBehaviour
         listNumbers.Add(obj);
         //вызываем метод SettingsNumbers для генерации цвета обьектам
         numbersManager.GetInfoNumbers(parentsNumber, listNumbers);
+
+        numberCount += 1;
+        if (randomNumbers.Count - 1 <= numberCount) numberCount = 0;
         spawn = true;
     }
 }

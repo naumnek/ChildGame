@@ -30,7 +30,7 @@ public class TapLogic : MonoBehaviour, IPointerEnterHandler
         }
         else
         {
-            transform.DOShakeScale(1);
+            moveObject.TriggerNotRightTap();
         }
 
     }

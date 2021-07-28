@@ -236,13 +236,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 814286541}
-  m_RootOrder: 2
+  m_Father: {fileID: 1747582007}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -150, y: 150}
-  m_SizeDelta: {x: 228, y: 210}
+  m_AnchoredPosition: {x: -50, y: -100}
+  m_SizeDelta: {x: 152, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &148550674
 MonoBehaviour:
@@ -288,7 +288,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 814286537}
+      - m_Target: {fileID: 1747582008}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
         m_MethodName: ButtonExit
         m_Mode: 1
@@ -416,7 +416,6 @@ GameObject:
   - component: {fileID: 814286540}
   - component: {fileID: 814286539}
   - component: {fileID: 814286538}
-  - component: {fileID: 814286537}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -424,18 +423,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &814286537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 814286536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3040f9487c1a0c4790a09d4d11aba44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &814286538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -509,8 +496,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1488008539}
-  - {fileID: 1913053914}
-  - {fileID: 148550672}
+  - {fileID: 1747582007}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -594,6 +580,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1488008538}
   m_CullTransparentMesh: 1
+--- !u!1 &1747582006
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1747582007}
+  - component: {fileID: 1747582008}
+  m_Layer: 5
+  m_Name: Menu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1747582007
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747582006}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 1}
+  m_Children:
+  - {fileID: 1913053914}
+  - {fileID: 148550672}
+  m_Father: {fileID: 814286541}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1747582008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747582006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3040f9487c1a0c4790a09d4d11aba44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menu: {fileID: 1747582006}
 --- !u!1 &1913053913
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,13 +661,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 814286541}
-  m_RootOrder: 1
+  m_Father: {fileID: 1747582007}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 490, y: 390}
+  m_AnchoredPosition: {x: 0, y: 150}
+  m_SizeDelta: {x: 326.66666, y: 260}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1913053916
 MonoBehaviour:
@@ -676,7 +713,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 814286537}
+      - m_Target: {fileID: 1747582008}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
         m_MethodName: LoadScene
         m_Mode: 5
