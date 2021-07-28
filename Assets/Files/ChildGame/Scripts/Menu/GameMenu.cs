@@ -10,6 +10,10 @@ public class GameMenu : MonoBehaviour
     public GameObject endMenu;
     public List<GameObject> DisableUI = new List<GameObject> {};
 
+    void Start()
+    {
+    }
+
     public void LoadScene(string scene)
     {
         StartCoroutine(wait(scene));

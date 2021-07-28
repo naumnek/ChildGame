@@ -90,8 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   limitOffScreen: 3
-  minSpeed: 16
-  maxSpeed: 32
+  moveSpeed: 30
   multiplierMax: 1.2
 --- !u!114 &172460624498636304
 MonoBehaviour:
@@ -106,3 +105,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 8
+  currentNumber: 0

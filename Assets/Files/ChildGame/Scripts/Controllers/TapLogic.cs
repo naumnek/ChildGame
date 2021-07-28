@@ -11,14 +11,22 @@ public class TapLogic : MonoBehaviour, IPointerEnterHandler
     public int number;
 
     [System.NonSerialized]
-    public NumbersManager numbersManager;
+    public NumbersManager m_numbersManager;
     public int currentNumber = 0;
+
+    MoveObject moveObject;
+
+    void Start()
+    {
+        moveObject = GetComponent<MoveObject>();
+    }
 
     public void OnPointerEnter(PointerEventData eventData) //тригер проверяет нажал ли пользователь на цифру
     {
-        if(number == currentNumber) //проверяем подходит ли наша цифра под текущую
+        if(number - 1 == currentNumber) //проверяем подходит ли наша цифра под текущую
         {
-            numbersManager.CheckTapNumber(number);
+            moveObject.TriggerRightTap();
+            m_numbersManager.CheckTapNumber(number);
         }
         else
         {
