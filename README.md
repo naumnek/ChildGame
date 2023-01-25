@@ -1,5 +1,6 @@
 # ChildGame
 2D-Hypercasual for Android
+<p>Editor: Unity</a>
 <p>Plugins: DoTween, TextMeshPro</a>
 <p>Developed as: Old prototype</a>
 <p></a>
